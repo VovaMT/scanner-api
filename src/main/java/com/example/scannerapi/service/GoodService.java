@@ -1,8 +1,8 @@
-package com.example.scanner_api.service;
+package com.example.scannerapi.service;
 
-import com.example.scanner_api.dto.GoodDTO;
-import com.example.scanner_api.entity.Good;
-import com.example.scanner_api.repository.GoodRepository;
+import com.example.scannerapi.dto.GoodDTO;
+import com.example.scannerapi.entity.Good;
+import com.example.scannerapi.repository.GoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

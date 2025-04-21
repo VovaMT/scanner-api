@@ -1,4 +1,4 @@
-package com.example.scanner_api.dto;
+package com.example.scannerapi.dto;
 
 import lombok.Data;
 

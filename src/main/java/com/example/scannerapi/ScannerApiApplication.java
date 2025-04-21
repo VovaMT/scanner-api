@@ -1,4 +1,4 @@
-package com.example.scanner_api;
+package com.example.scannerapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

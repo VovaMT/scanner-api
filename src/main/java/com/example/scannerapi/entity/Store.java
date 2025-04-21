@@ -1,4 +1,4 @@
-package com.example.scanner_api.entity;
+package com.example.scannerapi.entity;
 
 
 import jakarta.persistence.*;

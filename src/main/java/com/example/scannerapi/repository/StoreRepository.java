@@ -1,6 +1,6 @@
-package com.example.scanner_api.repository;
+package com.example.scannerapi.repository;
 
-import com.example.scanner_api.entity.Store;
+import com.example.scannerapi.entity.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StoreRepository extends JpaRepository<Store, Integer> {

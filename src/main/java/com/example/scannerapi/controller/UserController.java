@@ -1,8 +1,8 @@
-package com.example.scanner_api.controller;
+package com.example.scannerapi.controller;
 
-import com.example.scanner_api.dto.LicenseResponse;
-import com.example.scanner_api.dto.RegistrationRequest;
-import com.example.scanner_api.service.UserService;
+import com.example.scannerapi.dto.LicenseResponse;
+import com.example.scannerapi.dto.RegistrationRequest;
+import com.example.scannerapi.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

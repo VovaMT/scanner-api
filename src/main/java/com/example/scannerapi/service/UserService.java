@@ -1,9 +1,9 @@
-package com.example.scanner_api.service;
+package com.example.scannerapi.service;
 
-import com.example.scanner_api.dto.LicenseResponse;
-import com.example.scanner_api.dto.RegistrationRequest;
-import com.example.scanner_api.entity.User;
-import com.example.scanner_api.repository.UserRepository;
+import com.example.scannerapi.dto.LicenseResponse;
+import com.example.scannerapi.dto.RegistrationRequest;
+import com.example.scannerapi.entity.User;
+import com.example.scannerapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

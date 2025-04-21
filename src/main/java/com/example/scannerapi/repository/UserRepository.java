@@ -1,6 +1,6 @@
-package com.example.scanner_api.repository;
+package com.example.scannerapi.repository;
 
-import com.example.scanner_api.entity.User;
+import com.example.scannerapi.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

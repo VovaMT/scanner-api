@@ -1,7 +1,7 @@
-package com.example.scanner_api.controller;
+package com.example.scannerapi.controller;
 
-import com.example.scanner_api.dto.GoodDTO;
-import com.example.scanner_api.service.GoodService;
+import com.example.scannerapi.dto.GoodDTO;
+import com.example.scannerapi.service.GoodService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
