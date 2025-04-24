@@ -5,22 +5,33 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "good")
 public class Good {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer goodId;
-    private String barCode;
-    private String name;
-    private String goodCode;
 
-    public Good(String barCode, String name, String goodCode) {
-        this.barCode = barCode;
-        this.name = name;
-        this.goodCode = goodCode;
-    }
+    private String name;
+    private Boolean inMatrix;
+    private String unit;
+    private String mask;
+    private String boxBarCode;
+    private Boolean isProduction;
+    private Boolean isExcise;
+    private Integer priceStatus;
+    private Boolean reservationType;
+    private String providerName;
+    private String barCode;
+    private String goodCode;
+    private Double price;
+    private Double stockCount;
+    private Integer blackMailCategory;
+    private String endSaleDate; // або LocalDate, якщо хочеш
+    private String excise;
 }
+

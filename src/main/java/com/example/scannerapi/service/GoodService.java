@@ -25,12 +25,27 @@ public class GoodService {
 
     private GoodDTO toDto(Good good) {
         GoodDTO dto = new GoodDTO();
-        dto.setGoodId(good.getGoodId());
-        dto.setBarCode(good.getBarCode());
         dto.setName(good.getName());
+        dto.setInMatrix(good.getInMatrix());
+        dto.setIsWeightGood("кг".equalsIgnoreCase(good.getUnit()));
+        dto.setUnit(good.getUnit());
+        dto.setMask(good.getMask());
+        dto.setBoxBarCode(good.getBoxBarCode());
+        dto.setIsProduction(good.getIsProduction());
+        dto.setIsExcise(good.getIsExcise());
+        dto.setPriceStatus(good.getPriceStatus());
+        dto.setReservationType(good.getReservationType());
+        dto.setProviderName(good.getProviderName());
+        dto.setBarCode(good.getBarCode());
         dto.setGoodCode(good.getGoodCode());
+        dto.setPrice(good.getPrice());
+        dto.setStockCount(good.getStockCount());
+        dto.setBlackMailCategory(good.getBlackMailCategory());
+        dto.setEndSaleDate(good.getEndSaleDate());
+        dto.setExcise(good.getExcise());
         return dto;
     }
+
 
     public GoodDTO getGoodByBarCode(String barcode) {
         return repository.findByBarCode(barcode)
