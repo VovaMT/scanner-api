@@ -2,11 +2,13 @@ package com.example.scannerapi.service;
 
 import com.example.scannerapi.dto.GoodDTO;
 import com.example.scannerapi.entity.Good;
+import com.example.scannerapi.entity.User;
 import com.example.scannerapi.repository.GoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,4 +32,9 @@ public class GoodService {
         return dto;
     }
 
+    public GoodDTO getGoodByBarCode(String barcode) {
+        return repository.findByBarCode(barcode)
+                .map(this::toDto)
+                .orElse(null);
+    }
 }

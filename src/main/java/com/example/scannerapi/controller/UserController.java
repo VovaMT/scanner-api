@@ -26,10 +26,13 @@ public class UserController {
     }
 
     @GetMapping("/check-license")
-    public ResponseEntity<LicenseResponse> checkLicense(@RequestParam("key") String key) {
-        LicenseResponse response = userService.getLicenseInfo(key);
-
-        return ResponseEntity.ok(response);
+    public ResponseEntity<?> checkLicense(@RequestParam("key") String key) {
+        try {
+            userService.getLicenseInfo(key);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+        }
     }
 
 }

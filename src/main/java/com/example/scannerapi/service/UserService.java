@@ -31,19 +31,18 @@ public class UserService {
         repository.save(user);
     }
 
-    public LicenseResponse getLicenseInfo(String key) {
+    public void getLicenseInfo(String key) {
         Optional<User> userOptional = repository.findByKey(key);
 
         if (userOptional.isEmpty()) {
-            return new LicenseResponse("USER_NOT_FOUND", null);
+            throw new IllegalArgumentException("User not found");
         }
 
         User user = userOptional.get();
 
         if (user.getKeyLicense() == null || user.getKeyLicense().isEmpty()) {
-            return new LicenseResponse("NO_LICENSE", null);
+            throw new IllegalArgumentException("No license");
         }
-
-        return new LicenseResponse("LICENSED", user.getKeyLicense());
+        // Ліцензія є
     }
 }

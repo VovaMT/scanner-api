@@ -1,6 +1,5 @@
 package com.example.scannerapi.service;
 
-import com.example.scannerapi.dto.LicenseResponse;
 import com.example.scannerapi.dto.RegistrationRequest;
 import com.example.scannerapi.entity.User;
 import com.example.scannerapi.repository.UserRepository;
@@ -51,8 +50,10 @@ class UserServiceTest {
     void testGetLicenseInfo_UserNotFound() {
         when(userRepository.findByKey("fea554a1-9bb3-47a8-8923-db394dae4ebb")).thenReturn(Optional.empty());
 
-        LicenseResponse response = userService.getLicenseInfo("fea554a1-9bb3-47a8-8923-db394dae4ebb");
-        assertEquals("USER_NOT_FOUND", response.getStatus());
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                userService.getLicenseInfo("fea554a1-9bb3-47a8-8923-db394dae4ebb")
+        );
+        assertEquals("User not found", exception.getMessage());
     }
 
     @Test
@@ -63,20 +64,22 @@ class UserServiceTest {
 
         when(userRepository.findByKey("fea554a1-9bb3-47a8-8923-db394dae4ebb")).thenReturn(Optional.of(user));
 
-        LicenseResponse response = userService.getLicenseInfo("fea554a1-9bb3-47a8-8923-db394dae4ebb");
-        assertEquals("NO_LICENSE", response.getStatus());
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                userService.getLicenseInfo("fea554a1-9bb3-47a8-8923-db394dae4ebb")
+        );
+        assertEquals("No license", exception.getMessage());
     }
 
     @Test
     void testGetLicenseInfo_Licensed() {
         User user = new User();
         user.setKey("fea554a1-9bb3-47a8-8923-db394dae4ebb");
-        user.setKeyLicense("LICENSE_456");
+        user.setKeyLicense("LICENSE");
 
         when(userRepository.findByKey("fea554a1-9bb3-47a8-8923-db394dae4ebb")).thenReturn(Optional.of(user));
 
-        LicenseResponse response = userService.getLicenseInfo("fea554a1-9bb3-47a8-8923-db394dae4ebb");
-        assertEquals("LICENSED", response.getStatus());
-        assertEquals("LICENSE_456", response.getKeyLicense());
+        assertDoesNotThrow(() ->
+                userService.getLicenseInfo("fea554a1-9bb3-47a8-8923-db394dae4ebb")
+        );
     }
 }
