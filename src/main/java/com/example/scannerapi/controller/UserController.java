@@ -35,4 +35,13 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user-info")
+    public ResponseEntity<?> getUserInfo(@RequestParam("key") String key) {
+        try {
+            return ResponseEntity.ok(userService.getUserInfo(key));
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+        }
+    }
+
 }

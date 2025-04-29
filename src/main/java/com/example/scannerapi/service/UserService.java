@@ -7,6 +7,7 @@ import com.example.scannerapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -44,5 +45,22 @@ public class UserService {
             throw new IllegalArgumentException("No license");
         }
         // Ліцензія є
+    }
+
+    public Map<String, Object> getUserInfo(String key) {
+        Optional<User> userOptional = repository.findByKey(key);
+
+        if (userOptional.isEmpty()) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        User user = userOptional.get();
+        boolean licensed = user.getKeyLicense() != null && !user.getKeyLicense().isEmpty();
+
+        return Map.of(
+                "name", user.getName(),
+                "key", user.getKey(),
+                "licensed", licensed
+        );
     }
 }
