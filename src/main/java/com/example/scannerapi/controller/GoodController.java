@@ -30,4 +30,7 @@ public class GoodController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+
 }

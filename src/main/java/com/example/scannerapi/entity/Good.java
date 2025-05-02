@@ -31,7 +31,7 @@ public class Good {
     private Double price;
     private Double stockCount;
     private Integer blackMailCategory;
-    private String endSaleDate; // або LocalDate, якщо хочеш
+    private String endSaleDate;
     private String excise;
 }
 
