@@ -9,6 +9,7 @@ public class InventoryItemDTO {
     private Integer type;
     private String scannedAt;
     private String updatedAt;
-
 }
+
+
 

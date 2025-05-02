@@ -1,11 +1,17 @@
 package com.example.scannerapi.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
 @Entity
 @Table(name = "inventory_items")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class InventoryItem {
 
     @Id
@@ -19,5 +25,8 @@ public class InventoryItem {
     private String scannedAt;
     private String updatedAt;
 
-    private String deviceKey;
+    @ManyToOne
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
 }
+

@@ -1,6 +1,5 @@
 package com.example.scannerapi.repository;
 
-import com.example.scannerapi.entity.Good;
 import com.example.scannerapi.entity.InventoryItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
