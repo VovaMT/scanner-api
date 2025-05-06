@@ -22,12 +22,12 @@ public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @PostMapping("/sync")
-    public ResponseEntity<?> syncInventory(
+    @PostMapping("/upload")
+    public ResponseEntity<?> uploadInventory(
             @RequestBody List<InventoryItemDTO> items,
             @RequestHeader("Device-Key") String deviceKey
     ) {
-        inventoryService.syncInventory(deviceKey, items);
+        inventoryService.uploadInventory(deviceKey, items);
         return ResponseEntity.ok(Map.of("message", "Інвентаризація збережена"));
     }
 

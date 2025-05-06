@@ -1,6 +1,6 @@
 package com.example.scannerapi.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,9 +17,11 @@ public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "Location", nullable = false)
     private String location;
 
-    @OneToMany(mappedBy = "store")
+    @JsonIgnore
+    @ManyToMany(mappedBy = "stores")
     private List<User> users;
 }

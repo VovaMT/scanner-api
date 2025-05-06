@@ -16,33 +16,28 @@ public class LicenseInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String key = request.getHeader("Device-Key");
+        String token = request.getHeader("License-Key");
 
         if (key == null || key.isEmpty()) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.setContentType("application/json");
-            response.getWriter().write("{\"error\": \"Device key is missing\"}");
-            return false;
+            return reject(response, HttpServletResponse.SC_UNAUTHORIZED, "Device key is missing");
+        }
+
+        if (token == null || token.isEmpty()) {
+            return reject(response, HttpServletResponse.SC_UNAUTHORIZED, "License token is missing");
         }
 
         try {
-            userService.getLicenseInfo(key);
+            userService.validateLicense(key, token); //  основна перевірка
             return true;
         } catch (IllegalArgumentException e) {
-            String message = e.getMessage();
-            int status;
-
-            if (message.equals("User not found")) {
-                status = HttpServletResponse.SC_NOT_FOUND;
-            } else if (message.equals("No license")) {
-                status = HttpServletResponse.SC_UNAUTHORIZED;
-            } else {
-                status = HttpServletResponse.SC_BAD_REQUEST;
-            }
-
-            response.setStatus(status);
-            response.setContentType("application/json");
-            response.getWriter().write("{\"error\": \"" + message + "\"}");
-            return false;
+            return reject(response, HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
+    }
+
+    private boolean reject(HttpServletResponse response, int status, String message) throws Exception {
+        response.setStatus(status);
+        response.setContentType("application/json");
+        response.getWriter().write("{\"error\": \"" + message + "\"}");
+        return false;
     }
 }

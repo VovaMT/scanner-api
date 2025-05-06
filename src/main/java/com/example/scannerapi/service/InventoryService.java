@@ -25,7 +25,7 @@ public class InventoryService {
     private final InventoryItemRepository itemRepository;
 
     @Transactional
-    public void syncInventory(String deviceKey, List<InventoryItemDTO> items) {
+    public void uploadInventory(String deviceKey, List<InventoryItemDTO> items) {
         if (items.isEmpty()) {
             throw new IllegalArgumentException("Список товарів порожній");
         }
