@@ -58,9 +58,10 @@ public class UserService {
             throw new IllegalArgumentException("Token does not match key");
         }
 
-        if (user.getStores() == null || user.getStores().isEmpty()) {
+        if ((user.getStores() == null || user.getStores().isEmpty()) && user.getStore() == null) {
             throw new IllegalArgumentException("User not assigned to any store");
         }
+
     }
 
     public Map<String, Object> getUserInfo(String key) {
